@@ -71,9 +71,9 @@ export default function PaginaInicial() {
         styleSheet={{
           display: 'flex', alignItems: 'center', justifyContent: 'center',
           backgroundColor: '#e1ebf5',
-          backgroundImage: 'url(https://virtualbackgrounds.site/wp-content/uploads/2020/08/the-matrix-digital-rain.jpg)',
+          backgroundImage: 'url(https://img.wallpapersafari.com/desktop/1366/768/99/26/uhf6Ek.jpg)',
           // backgroundImage: 'radial-gradient(at 47% 33%, hsl(206.67, 43%, 92%) 0, transparent 59%), radial-gradient(at 82% 65%, hsl(88.65, 73%, 48%) 0, transparent 55%)',
-          // backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundBlendMode: 'multiply',
+          backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundBlendMode: 'multiply',
         }}
       >
         <Box
