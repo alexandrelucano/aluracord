@@ -44,11 +44,10 @@ export default function PaginaInicial() {
       <Box
         styleSheet={{
           display: 'flex', alignItems: 'center', justifyContent: 'center',
-          backgroundColor: '#e1ebf5',
+          background: '#111b3e',
           backgroundImage: appConfig.theme.background,
           // backgroundImage: 'radial-gradient(at 47% 33%, hsl(206.67, 43%, 92%) 0, transparent 59%), radial-gradient(at 82% 65%, hsl(88.65, 73%, 48%) 0, transparent 55%)',
-          backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundBlendMode: 'multiply',
-        }}
+          backgroundRepeat: 'no-repeat', backgroundSize: 'cover',         }}
       >
         <Box
           styleSheet={{

@@ -10,9 +10,9 @@ export default function ChatPage() {
         <Box
             styleSheet={{
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
-                backgroundColor: appConfig.theme.colors.primary[500],
+                backgroundColor: '#111b3e',
                 backgroundImage: appConfig.theme.background,
-                backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundBlendMode: 'multiply',
+                backgroundRepeat: 'no-repeat', backgroundSize: 'cover',
                 color: appConfig.theme.colors.neutrals['000']
             }}
         >
