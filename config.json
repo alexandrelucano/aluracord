@@ -26,12 +26,14 @@
                 "500": "#e1ebf5",
                 "600": "#29333D",
                 "700": "#212931",
+                "705": "#21293175",
                 "800": "#181F25",
                 "80095": "#181F2585",
                 "900": "#101418",
                 "999": "#080A0C"
             }
-        }
+        },
+        "background": "url(https://img.wallpapersafari.com/desktop/1366/768/99/26/uhf6Ek.jpg)"
     },
     "stickers": [
         "https://www.alura.com.br/imersao-react-4/assets/figurinhas/Figurinha_1.png",
