@@ -46,6 +46,7 @@ export default function PaginaInicial() {
           display: 'flex', alignItems: 'center', justifyContent: 'center',
           background: '#111b3e',
           backgroundImage: appConfig.theme.background,
+          backgroundPosition: 'center center',
           // backgroundImage: 'radial-gradient(at 47% 33%, hsl(206.67, 43%, 92%) 0, transparent 59%), radial-gradient(at 82% 65%, hsl(88.65, 73%, 48%) 0, transparent 55%)',
           backgroundRepeat: 'no-repeat', backgroundSize: 'cover',         }}
       >
