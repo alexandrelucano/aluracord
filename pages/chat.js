@@ -2,6 +2,7 @@ import { Box, Text, TextField, Image, Button } from '@skynexui/components';
 import React from 'react';
 import appConfig from '../config.json';
 import { createClient } from '@supabase/supabase-js';
+import { useRouter } from 'next/router';
 
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTY0MzMyNDg1MSwiZXhwIjoxOTU4OTAwODUxfQ.wEjwDNJB2MAdvpBbba_F2KXyc7a1Nf0RngV1M7q53Dw';
 const SUPABASE_URL = "https://lpctdgurkggsegskdour.supabase.co";
@@ -12,9 +13,14 @@ const supabaseClient = createClient(SUPABASE_URL , SUPABASE_ANON_KEY);
 //TODO: loading no fetch
 //TODO: passando mouse na foto aparecer infos
 
+// TODO: img usuario inválido
+// TODO: usar Image Next
+
 export default function ChatPage() {
     const [mensagem, setMensagem] = React.useState('');
     const [listaDeMensagens, setListaDeMensagens] = React.useState([]);
+    const router = useRouter()
+    const username = router.query.username;
     // Sua lógica vai aqui
     React.useEffect(() =>{
         supabaseClient
@@ -31,7 +37,7 @@ export default function ChatPage() {
     function handleNovaMensagem(novaMensagem) {
         const mensagem = {
             // id: listaDeMensagens.length + 1,
-            de: 'omariosouto',
+            de: username,
             texto: novaMensagem
         };
 
