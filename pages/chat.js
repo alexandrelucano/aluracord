@@ -43,11 +43,12 @@ export default function ChatPage() {
                 setListaDeMensagens(data);
             });
         escutaMensagensEmTempoReal((novaMensagem) => {
-            // handleNovaMensagem(novaMensagem)
-                setListaDeMensagens([
-                                novaMensagem,
-                    ...listaDeMensagens,
-                ]);
+                setListaDeMensagens((valorAtualDaLista) => {
+                    return [
+                        novaMensagem,
+                        ...valorAtualDaLista,
+                    ]
+                });
         });
 
     },[]);
