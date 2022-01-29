@@ -1,8 +1,9 @@
-import { Box, Text, TextField, Image, Button } from '@skynexui/components';
+import { Box, Text, TextField, Button, Image } from '@skynexui/components';
 import React from 'react';
 import appConfig from '../config.json';
 import { createClient } from '@supabase/supabase-js';
 import { useRouter } from 'next/router';
+import { ButtonSendSticker } from '../src/components/ButtonSendSticker.js'
 
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTY0MzMyNDg1MSwiZXhwIjoxOTU4OTAwODUxfQ.wEjwDNJB2MAdvpBbba_F2KXyc7a1Nf0RngV1M7q53Dw';
 const SUPABASE_URL = "https://lpctdgurkggsegskdour.supabase.co";
@@ -140,6 +141,11 @@ export default function ChatPage() {
                                 color: appConfig.theme.colors.neutrals[200],
                             }}
                         />
+                        <ButtonSendSticker
+                            onStickerClick={() => {
+                                console.log('Salva sticker no banco')
+                            }}
+                        />
                     </Box>
                 </Box>
             </Box>
@@ -206,6 +212,9 @@ function MessageList(props) {
                                     display: 'inline-block',
                                     marginRight: '8px',
                                 }}
+                                width={20}
+                                height={20}
+                                quality={5}
                                 src={`https://github.com/${mensagem.de}.png`}
                             />
                             <Text tag="strong">
@@ -222,7 +231,14 @@ function MessageList(props) {
                                 {(new Date().toLocaleDateString())}
                             </Text>
                         </Box>
-                        {mensagem.texto}
+                        {mensagem.texto.startsWith(':sticker:')
+                            ? (
+                                <Image src={mensagem.texto.replace(':sticker:', '')} />
+                            )
+                            : (
+                                mensagem.texto
+                            )
+                        }
                     </Text>
                 );
             })}

@@ -1,4 +1,6 @@
 // import App from 'next/app'
+import appConfig from '../config.json';
+//TODO Fazer o hover
 
 function GlobalStyle() {
     return (
@@ -25,6 +27,17 @@ function GlobalStyle() {
           flex: 1;
         }
         /* ./App fit Height */
+        ::-webkit-scrollbar {
+          width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+          box-shadow: inset 0 0 5px ${appConfig.theme.colors.neutrals['008']};
+          border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+          background: ${appConfig.theme.colors.primary[505]};
+          border-radius: 10px;
+        }
       `}</style>
     );
 }
