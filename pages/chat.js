@@ -17,6 +17,16 @@ const supabaseClient = createClient(SUPABASE_URL , SUPABASE_ANON_KEY);
 // TODO: img usuario inválido
 // TODO: usar Image Next
 
+function escutaMensagensEmTempoReal(adicionaMensagem) {
+    return supabaseClient
+        .from('mensagens')
+        .on('INSERT', (respostaLive) => {
+            adicionaMensagem(respostaLive.new)
+        })
+        .subscribe();
+
+}
+
 export default function ChatPage() {
     const [mensagem, setMensagem] = React.useState('');
     const [listaDeMensagens, setListaDeMensagens] = React.useState([]);
@@ -29,9 +39,16 @@ export default function ChatPage() {
             .select('*')
             .order('id', {ascending: false})
             .then(({data}) => {
-                console.log(data);
+                // console.log(data);
                 setListaDeMensagens(data);
             });
+        escutaMensagensEmTempoReal((novaMensagem) => {
+            // handleNovaMensagem(novaMensagem)
+                setListaDeMensagens([
+                                novaMensagem,
+                    ...listaDeMensagens,
+                ]);
+        });
 
     },[]);
 
@@ -48,10 +65,7 @@ export default function ChatPage() {
                 mensagem
             ])
             .then(({data}) => {
-                setListaDeMensagens([
-                    data[0],
-                    ...listaDeMensagens,
-                ]);
+
             });
 
         setMensagem('');
@@ -142,8 +156,9 @@ export default function ChatPage() {
                             }}
                         />
                         <ButtonSendSticker
-                            onStickerClick={() => {
+                            onStickerClick={(sticker) => {
                                 console.log('Salva sticker no banco')
+                                handleNovaMensagem(':sticker:' + sticker)
                             }}
                         />
                     </Box>
@@ -172,7 +187,7 @@ function Header() {
 }
 
 function MessageList(props) {
-    console.log('MessageList', props);
+    // console.log('MessageList', props);
     return (
         <Box
             tag="ul"
