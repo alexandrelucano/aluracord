@@ -81,7 +81,7 @@ export default function PaginaInicial() {
           >
             <Titulo
               styleSheet={{
-                boxShadow: '10px 10px 10px rgba(250,250,250,0.5)',
+                textShadow: '10px 10px #ffffff22',
               }}
             tag="h2">Boas vindas de volta!</Titulo>
             <Text variant="body3" styleSheet={{ marginBottom: '32px', color: appConfig.theme.colors.neutrals[300] }}>

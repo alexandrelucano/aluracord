@@ -43,17 +43,20 @@ export default function ChatPage() {
                 setListaDeMensagens(data);
             });
         escutaMensagensEmTempoReal((novaMensagem) => {
-                setListaDeMensagens((valorAtualDaLista) => {
-                    return [
-                        novaMensagem,
-                        ...valorAtualDaLista,
-                    ]
-                });
+            setListaDeMensagens((valorAtualDaLista) => {
+                return [
+                    novaMensagem,
+                    ...valorAtualDaLista,
+                ]
+            });
         });
 
     },[]);
 
     function handleNovaMensagem(novaMensagem) {
+        const regex = /^https?:\/\/.*\/.*\.(png|gif|webp|jpeg|jpg)\??.*$/gmi;
+        if(novaMensagem.match(regex)) novaMensagem = `:sticker:${novaMensagem}`;
+        console.log(novaMensagem);
         const mensagem = {
             // id: listaDeMensagens.length + 1,
             de: username,
@@ -66,7 +69,6 @@ export default function ChatPage() {
                 mensagem
             ])
             .then(({data}) => {
-
             });
 
         setMensagem('');
@@ -159,7 +161,7 @@ export default function ChatPage() {
                         />
                         <ButtonSendSticker
                             onStickerClick={(sticker) => {
-                                console.log('Salva sticker no banco')
+                                // console.log('Salva sticker no banco')
                                 handleNovaMensagem(':sticker:' + sticker)
                             }}
                         />
