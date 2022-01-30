@@ -81,7 +81,7 @@ export default function ChatPage() {
                 backgroundImage: appConfig.theme.background,
                 backgroundRepeat: 'no-repeat', backgroundSize: 'cover',
                 backgroundPosition: 'center center',
-                color: appConfig.theme.colors.neutrals['000']
+                color: appConfig.theme.colors.neutrals['000'],
             }}
         >
             <Box
@@ -111,6 +111,7 @@ export default function ChatPage() {
                         flexDirection: 'column',
                         borderRadius: '5px',
                         padding: '16px',
+                        boxShadow: '10px 10px 10px rgba(30,30,30,0.5)',
                     }}
                 >
 

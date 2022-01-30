@@ -79,12 +79,19 @@ export default function PaginaInicial() {
               width: { xs: '100%', sm: '50%' }, textAlign: 'center', marginBottom: '32px',
             }}
           >
-            <Titulo tag="h2">Boas vindas de volta!</Titulo>
+            <Titulo
+              styleSheet={{
+                boxShadow: '10px 10px 10px rgba(250,250,250,0.5)',
+              }}
+            tag="h2">Boas vindas de volta!</Titulo>
             <Text variant="body3" styleSheet={{ marginBottom: '32px', color: appConfig.theme.colors.neutrals[300] }}>
               {appConfig.name}
             </Text>
 
             <TextField
+              styleSheet={{
+                boxShadow: '10px 10px 10px rgba(30,30,30,0.5)',
+              }}
               fullWidth
               value={username}
               onChange={(event)=> {
@@ -101,14 +108,19 @@ export default function PaginaInicial() {
               }}
             />
             <Button
+              styleSheet={{
+                backgroundImage: 'linear-gradient(to right, #DA22FFcc 0%, #9733EE  51%, #DA22FFcc  100%)',
+                transition: '0.5s',
+                boxShadow: '10px 10px 10px #DA22FF33'
+              }}
               type='submit'
               label='Entrar'
               fullWidth
               buttonColors={{
                 contrastColor: appConfig.theme.colors.neutrals["000"],
-                mainColor: appConfig.theme.colors.primary[500],
-                mainColorLight: appConfig.theme.colors.primary[400],
-                mainColorStrong: appConfig.theme.colors.primary[600],
+                mainColor: 'black',
+                mainColorLight: 'green',
+                mainColorStrong: 'red',
               }}
             />
           </Box>
@@ -129,6 +141,7 @@ export default function PaginaInicial() {
               borderRadius: '10px',
               flex: 1,
               minHeight: '240px',
+              boxShadow: '10px 10px 10px rgba(30,30,30,0.5)',
             }}
           >
             <Image
