@@ -233,9 +233,7 @@ function MessageList(props) {
                                 quality={5}
                                 src={`https://github.com/${mensagem.de}.png`}
                             />
-                            <Text tag="strong">
-                                {mensagem.de}
-                            </Text>
+                            <Text tag="strong">{mensagem.de}</Text>
                             <Text
                                 styleSheet={{
                                     fontSize: '10px',
@@ -249,7 +247,13 @@ function MessageList(props) {
                         </Box>
                         {mensagem.texto.startsWith(':sticker:')
                             ? (
-                                <Image src={mensagem.texto.replace(':sticker:', '')} />
+                                <Image
+                                styleSheet={{
+                                    height: '100px',
+                                    display: 'inline-block',
+                                    marginRight: '8px',
+                                }}
+                                src={mensagem.texto.replace(':sticker:', '')} />
                             )
                             : (
                                 mensagem.texto
