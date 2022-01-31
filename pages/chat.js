@@ -4,7 +4,10 @@ import appConfig from '../config.json';
 import { createClient } from '@supabase/supabase-js';
 import { useRouter } from 'next/router';
 import { ButtonSendSticker } from '../src/components/ButtonSendSticker.js'
+import moment from 'moment';
+import 'moment/locale/pt-br';
 
+moment.locale('pt-br');
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTY0MzMyNDg1MSwiZXhwIjoxOTU4OTAwODUxfQ.wEjwDNJB2MAdvpBbba_F2KXyc7a1Nf0RngV1M7q53Dw';
 const SUPABASE_URL = "https://lpctdgurkggsegskdour.supabase.co";
 const supabaseClient = createClient(SUPABASE_URL , SUPABASE_ANON_KEY);
@@ -25,6 +28,11 @@ function escutaMensagensEmTempoReal(adicionaMensagem) {
         })
         .subscribe();
 
+}
+
+function exibeData(data) {
+    const DataJS = new Date(data).toLocaleDateString();
+    return moment(data).fromNow();
 }
 
 export default function ChatPage() {
@@ -56,7 +64,6 @@ export default function ChatPage() {
     function handleNovaMensagem(novaMensagem) {
         const regex = /^https?:\/\/.*\/.*\.(png|gif|webp|jpeg|jpg)\??.*$/gmi;
         if(novaMensagem.match(regex)) novaMensagem = `:sticker:${novaMensagem}`;
-        console.log(novaMensagem);
         const mensagem = {
             // id: listaDeMensagens.length + 1,
             de: username,
@@ -245,14 +252,14 @@ function MessageList(props) {
                                 }}
                                 tag="span"
                             >
-                                {(new Date().toLocaleDateString())}
+                                {(exibeData(mensagem.created_at))}
                             </Text>
                         </Box>
                         {mensagem.texto.startsWith(':sticker:')
                             ? (
                                 <Image
                                 styleSheet={{
-                                    height: '100px',
+                                    height: '150px',
                                     display: 'inline-block',
                                     marginRight: '8px',
                                 }}
